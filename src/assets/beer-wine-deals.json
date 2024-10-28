@@ -1,0 +1,425 @@
+{
+    "beerWineDeals": [
+        {
+            "Category": "Beer",
+            "Description": "Armed Forces Cat Shot Lager",
+            "Quantity": "6 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Armed Forces Special Hop IPA",
+            "Quantity": "6 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Armed Forces Preamble Lager",
+            "Quantity": "6 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Brew Kettle Oktoberfest",
+            "Quantity": "6 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Keystone Light",
+            "Quantity": "24 Pack - Bottles",
+            "Size": "12oz",
+            "SalePrice": "$13.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Natural Light",
+            "Quantity": "24 Pack - Cans",
+            "Size": "12oz",
+            "SalePrice": "$13.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Paulaner Münchner Lager",
+            "Quantity": "Single Cans",
+            "Size": "19.2oz",
+            "SalePrice": "2 for $3"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Schöfferhofer Watermelon Mint",
+            "Quantity": "4 Pack - Cans",
+            "Size": "16.9oz",
+            "RetailPrice": 9.99,
+            "SalePrice": "$2.99"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Wolf's Ridge Coconut Cold Brew Daybreak",
+            "Quantity": "6 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 12.99,
+            "SalePrice": "$3.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Yuengling Traditional Lager & Light",
+            "Quantity": "Single Cans",
+            "Size": "16oz",
+            "RetailPrice": 1.99,
+            "SalePrice": "4 for $5"
+        },
+        {
+            "Category": "Seltzers",
+            "Description": "Arizona Hard Lemon Tea",
+            "Quantity": "12 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 17.99,
+            "SalePrice": "$9.99"
+        },
+        {
+            "Category": "FMB",
+            "Description": "Seagram's Escapes Refreshers",
+            "Quantity": "Single Cans",
+            "Size": "Other",
+            "SalePrice": "3 for $1.00"
+        },
+        {
+            "Category": "Seltzers",
+            "Description": "Sway Pool Party Pack",
+            "Quantity": "8 Pack - Cans",
+            "Size": "12oz",
+            "RetailPrice": 17.99,
+            "SalePrice": "$8.99"
+        },
+        {
+            "Category": "FMB",
+            "Description": "Verdi Sparkling Watermelon",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 8.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Beer",
+            "Description": "Wilds Tea Assorted Varietals",
+            "Quantity": "Single Cans",
+            "Size": "16oz",
+            "SalePrice": "2 for $3"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Barefoot Wine Varietals",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 8.99,
+            "SalePrice": "$6.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Beatbox Zero Sugar Watermelon",
+            "Quantity": "Box",
+            "Size": "500ml",
+            "RetailPrice": 3.99,
+            "SalePrice": "$1.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Benaccetto Prosecco",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 15.99,
+            "SalePrice": "$8.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Beringer Main & Vine Select Varietals",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 9.99,
+            "SalePrice": "$5.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Bomzz Assorted Varieties Wine Cocktails",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "SalePrice": "5 for $5",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Confetti Sweet",
+            "Quantity": "Single Bottles",
+            "Size": "187ml",
+            "RetailPrice": 13.99,
+            "SalePrice": "$7.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Dark Horse Wines Select Varietals",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 10.99,
+            "SalePrice": "$7.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Dellatorri Sparkling Moscato",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 12.99,
+            "SalePrice": "$6.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Domaine de Nizas Le Clos",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 14.99,
+            "SalePrice": "$5.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "El Pensador Garnacha",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Ferrari-Carano Fumé Blanc",
+            "Quantity": "Single Bottles",
+            "Size": "375ml",
+            "RetailPrice": 9.99,
+            "SalePrice": "$3.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Foppiano 1896 Red Blend",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 22.99,
+            "SalePrice": "$9.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Freixenet Cordon Negro Rosé",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 12.99,
+            "SalePrice": "$5.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Frontera Wines",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 7.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Fruit & Flower Chardonnay",
+            "Quantity": "2 Pack - Cans",
+            "Size": "250ml",
+            "RetailPrice": 12.99,
+            "SalePrice": "$1.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Gato Negro Select Varietals",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 10.99,
+            "SalePrice": "$2.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Lemonade Stand Lemonade Moscato",
+            "Quantity": "Single Bottles",
+            "Size": "1.5 Liter",
+            "RetailPrice": 9.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Lunetta Prosecco Rosé",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 12.99,
+            "SalePrice": "2 for $10"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Manimurci Falanghina",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 17.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Monte Rio Skull Wines Red Blend",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 19.99,
+            "SalePrice": "$9.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Roscato Sweet Red",
+            "Quantity": "2 Pack - Cans",
+            "Size": "250ml",
+            "SalePrice": "$10.00",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Sunspell Cabernet Sauvignon",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 14.99,
+            "SalePrice": "$6.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Sutter Home Wine Cocktails",
+            "Quantity": "Single Bottles",
+            "Size": "1.5 Liter",
+            "RetailPrice": 15.99,
+            "SalePrice": "$5.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Sutter Home Fruit Infusions",
+            "Quantity": "Single Bottles",
+            "Size": "1.5 Liter",
+            "RetailPrice": 15.99,
+            "SalePrice": "$5.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Tortoise Creek Chardonnay",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 19.99,
+            "SalePrice": "$11.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Vanderpump Cabernet Sauvignon",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 34.99,
+            "SalePrice": "$9.99"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Woodbridge Fruitful Blends Wine",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 9.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Woodbridge Rosé",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 10.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Wine",
+            "Description": "Woodbridge Sessions WIne",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 9.99,
+            "SalePrice": "$4.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Cocktails",
+            "Description": "Chi-Chi's Singles Assorted Flavors",
+            "Quantity": "Single Bottles",
+            "Size": "200ml",
+            "RetailPrice": 1.99,
+            "SalePrice": "4 for $5.00"
+        },
+        {
+            "Category": "Spirits",
+            "Description": "Flash Point Cinnamon Whiskey",
+            "Quantity": "Single Bottles",
+            "Size": "16oz",
+            "RetailPrice": 7.99,
+            "SalePrice": "$1.99",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Cocktails",
+            "Description": "Pirate Water Assorted Flavors",
+            "Quantity": "Single Cans",
+            "Size": "16oz",
+            "SalePrice": "2 for $3",
+            "Restrictions": "Eastgate Only"
+        },
+        {
+            "Category": "Cocktails",
+            "Description": "Reggae Margarita",
+            "Quantity": "Single Bottles",
+            "Size": "1.5 Liter",
+            "RetailPrice": 14.99,
+            "SalePrice": "$5.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Cocktails",
+            "Description": "Salvador's Ready to Drink Cocktails",
+            "Quantity": "4 Pack - Bottles",
+            "Size": "200ml",
+            "RetailPrice": 8.99,
+            "SalePrice": "$1.99",
+            "Restrictions": "Fairfield Only"
+        },
+        {
+            "Category": "Spirits",
+            "Description": "Zackariah Harris Kentucky Straight Bourbon Whiskey",
+            "Quantity": "Single Bottles",
+            "Size": "750ml",
+            "RetailPrice": 19.99,
+            "SalePrice": "$3.99"
+        }
+    ]
+}

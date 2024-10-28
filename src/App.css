@@ -1,0 +1,46 @@
+#rootAnchor {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: visible;
+  z-index: 100;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100svw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: #2a4731;
+  text-align: center;
+}
+
+#appContainer {
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+input,
+select {
+  background: none;
+  border: none !important;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 600;
+  padding: 0;
+}/*# sourceMappingURL=App.css.map */
