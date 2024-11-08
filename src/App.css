@@ -43,4 +43,11 @@ select {
   cursor: pointer;
   font-weight: 600;
   padding: 0;
+}
+
+#listWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
 }/*# sourceMappingURL=App.css.map */

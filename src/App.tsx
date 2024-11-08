@@ -1,18 +1,26 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { assignStyles, Deal, fetchDealsData } from './utils'
-import { FilterToolbar } from './components/FilterToolbar'
+import { assignDevStyles, assignStyles, Deal, fetchDealsData, filterDeals, filterWithChips, sortDeals, tabNames } from './utils'
+import { FilterToolbar } from './components/Filter Toolbar/FilterToolbar'
+import { DealCard } from './components/Deal Card/DealCard'
+import { Chip } from './components/Chip/Chip'
 
 function App() {
   // original and display deals
-  const [deals, setDeals] = useState<Deal[]>()
-  const [filteredDeals, setFilteredDeals] = useState<Deal[]>()
+  const [deals, setDeals] = useState<Deal[]>([])
+  const [filteredDeals, setFilteredDeals] = useState<Deal[]>([])
+
+  // filtering variables
+  const [activeChips, setActiveChips] = useState<string[]>([])
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  const [sortQuery, setSortQuery] = useState<string>('')
 
   // layout variables
-  const [viewportRes, setViewportRes] = useState({ x: window.innerWidth, y: window.innerHeight })
-  const [isMobile, setIsMobile] = useState(viewportRes.x < 650)
+  //const [viewportRes, setViewportRes] = useState({ x: window.innerWidth, y: window.innerHeight })
+  //const [isMobile, setIsMobile] = useState(viewportRes.x < 650)
   const [navHeight, setNavHeight] = useState<number>(50)
 
+  // TODO: Figure out if search should be controlled or uncontrolled, useCallback? store filteredDeals in Zustand?
 
   useEffect(() => {  // fetch data and apply sticky compatible styles onload
     console.log("v 0.1");
@@ -20,8 +28,8 @@ function App() {
     const fetchData = async () => {
       try {
         const data = await fetchDealsData();
-        setDeals(data);
-        setFilteredDeals(data);
+        setDeals([...data]);
+        setFilteredDeals([...data]);
         console.log("Fetching data", data);
       } catch {
         console.log("Error fetching data in useEffect");
@@ -29,13 +37,14 @@ function App() {
     };
 
     setTimeout(assignStyles, 500);
+    assignDevStyles();
     fetchData();
   }, [])
 
   useEffect(() => { // window size listener
     const handleResize = () => {
-      setViewportRes({ x: window.innerWidth, y: window.innerHeight })
-      setIsMobile(window.innerWidth < 650)
+      //setViewportRes({ x: window.innerWidth, y: window.innerHeight })
+      //setIsMobile(window.innerWidth < 650)
       setNavHeight(document.getElementById('nav')?.offsetHeight ?? 50)
     };
 
@@ -47,11 +56,59 @@ function App() {
     };
   }, [window.innerWidth, window.innerHeight]);
 
+  useEffect(() => {
+    setFilteredDeals(getSortedAndFilteredDeals())
+  }, [searchQuery, sortQuery, activeChips])
+
+  const handleToggleChip = (chip: string) => {
+    if (activeChips.includes(chip)) {
+      const arr = [...activeChips];
+      arr.splice(arr.indexOf(chip), 1);  // Remove the chip by index
+
+      setActiveChips(arr); // remove the chip to toggle it off
+    } else {
+      setActiveChips([...activeChips, chip]) // add the chip to toggle it on
+    }
+  }
+
+  const getSortedAndFilteredDeals = (): Deal[] => {
+    //return [...sortDeals(filteredDeals, sortQuery)]
+    //console.log("searchQuery", searchQuery);
+    //console.log("sortQuery", sortQuery);
+
+    //return [...filterDeals(deals, searchQuery)]
+    //console.log("filtered with activeChips", filterWithChips(deals, activeChips), activeChips)
+    //return [...filterWithChips(deals, activeChips)]
+    return [...sortDeals(filterDeals(filterWithChips(deals, activeChips), searchQuery), sortQuery)]
+  }
+
   return (
     <>
       <div id="appContainer">
-        <h1>Beer and Wine One Time Deals</h1>
-        <FilterToolbar navHeight={navHeight} />
+
+        <h1 style={{
+          textAlign: 'left',
+          color: '#e9e5d4',
+          margin: 0,
+        }}>Beer and Wine One Time Deals</h1>
+
+        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: "flex-end",alignItems: 'center', position: 'sticky', top: navHeight, gap: '10px'}}>
+          
+          <div id='chipWrapper' style={{flexGrow: 1}}>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.beer)} title={tabNames.beer}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.wine)} title={tabNames.wine}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.spirits)} title={tabNames.spirits}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.misc)} title={tabNames.misc}></Chip>
+          </div>
+          <FilterToolbar navHeight={navHeight} searchQuery={''} setSortQuery={setSortQuery} setSearchQuery={setSearchQuery} />
+        </div>
+
+        <div id='listWrapper'>
+          {/* map filtered deals */}
+          {filteredDeals.map((deal, index) => {
+            return <DealCard key={`deal-card-${index}`} deal={deal}></DealCard>
+          })}
+        </div>
       </div>
     </>
   )

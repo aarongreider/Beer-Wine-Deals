@@ -1,21 +1,27 @@
 export type Deal = {
-    Category: string,
-    Description: string,
-    Quantity: string,
-    Size: string,
-    RetailPrice: number | string,
-    SalePrice: string,
-    Restrictions?: string,
+    category: string,
+    description: string,
+    quantity: string,
+    size: string,
+    retailPrice: number | string,
+    salePrice: string,
+    restrictions?: string,
 }
 
+export const tabNames = {
+    beer: "Beer",
+    wine: "Wine",
+    spirits: "Spirits",
+    misc: "Other"
+}
 const endpoints = {
-    dev: 'https://mobile-api.junglejims.com/fairfield-wine-cellar.json',
+    prod: 'https://mobile-api-dev.junglejims.com/beer-wine-deals.json',
     local: 'src/assets/beer-wine-deals.json',
 }
 
 export const fetchDealsData = async (): Promise<Deal[]> => {
     try {
-        const response = await fetch(import.meta.env.PROD ? endpoints.dev : endpoints.local); // if vite is in production mode run from the cors compatible endpoint
+        const response = await fetch(import.meta.env.PROD ? endpoints.prod : endpoints.local); // if vite is in production mode run from the cors compatible endpoint
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
@@ -29,16 +35,36 @@ export const fetchDealsData = async (): Promise<Deal[]> => {
 
 export const filterDeals = (deals: Deal[], searchQuery: string): Deal[] => {
     // filter bottle list based on query match, runs more frequently
+    console.log(searchQuery);
+
     const cleanQuery = `${searchQuery}`.toLowerCase()
     if (cleanQuery) {
         return deals.filter((deal) => {
             return (
-                `${deal.Category}`?.toLowerCase().includes(cleanQuery) ||
-                `${deal.Description}`?.toLowerCase().includes(cleanQuery) ||
-                `${deal.Size}`?.toLowerCase().includes(cleanQuery) ||
-                `$${deal.SalePrice}`?.toLowerCase().includes(cleanQuery) ||
-                `${deal.Restrictions}`?.toLowerCase().includes(cleanQuery)
+                `${deal.category}`?.toLowerCase().includes(cleanQuery) ||
+                `${deal.description}`?.toLowerCase().includes(cleanQuery) ||
+                `${deal.size}`?.toLowerCase().includes(cleanQuery) ||
+                `${deal.salePrice}`?.toLowerCase().includes(cleanQuery) ||
+                `${deal.restrictions}`?.toLowerCase().includes(cleanQuery)
             );
+        })
+    } else {
+        return deals
+    }
+}
+export const filterWithChips = (deals: Deal[], activeChips: string[]): Deal[] => {
+    // filter bottle list based on query match, runs more frequently
+    if (activeChips.length > 0) {
+        return deals.filter((deal) => { // filter deals matching condition
+            return activeChips.some((query) => { // if any active chip matches condition against deal
+                return `${deal.category}`.toLowerCase().includes(query.toLowerCase()) ? // if category and tab match
+                    true : query.toLowerCase() === tabNames.misc.toLowerCase() && // else if other tab is active
+                    ![
+                        tabNames.beer.toLowerCase(),
+                        tabNames.wine.toLowerCase(),
+                        tabNames.spirits.toLowerCase()
+                    ].includes(`${deal.category}`.toLowerCase())  // return true if it does not match any other tab name
+            })
         })
     } else {
         return deals
@@ -49,29 +75,47 @@ export const filterDeals = (deals: Deal[], searchQuery: string): Deal[] => {
 export const sortDeals = (filteredDeals: Deal[], sortQuery: string): Deal[] => {
     // Sort the filtered array by Vintage year, with undated bottles at the bottom
     const cleanPrice = (price: number | string): number => {
-        const priceString = `${price}`
+        let priceString = `${price}`
+        //console.log(priceString);
+
         if (priceString.includes("for")) {
             // separate the last number of the string
             const arr = priceString.split(' ')
-            console.log(arr[arr.length-1]);
-            // leaving it like this for now
-            //TODO: finish this method
+            priceString = arr[arr.length - 1];
         }
         // Remove non-numeric characters except periods (.) using a regex
-        const cleanedPrice = `${price}`.replace(/[^0-9.]/g, '');
+        const cleanedPrice = `${priceString}`.replace(/[^0-9.]/g, '');
+        //console.log(parseFloat(cleanedPrice));
+
         return cleanedPrice === "" ? 0.0 : parseFloat(cleanedPrice); // Convert cleaned string to a float
-    };
+    }
+
+    const perUnitPrice = (price: number | string): number => {
+
+        if (`${price}`.includes("for")) {
+            // separate the first and last number of the string, then divide for the per unit price
+            const totalPrice = cleanPrice(`${price}`)
+            const arr = `${price}`.split(' ')
+            const saleQuantity = parseFloat(arr[0]);
+            //console.log("sale, total, sale / total ", saleQuantity, totalPrice, totalPrice / saleQuantity);
+
+            return totalPrice / saleQuantity
+        }
+        return cleanPrice(price)
+    }
 
     if (sortQuery === '') {
         return filteredDeals
     } else {
         let sortedDeals: Deal[] = filteredDeals;
+        console.log('sortQuery', sortQuery);
+
         switch (sortQuery) {
             case "price ascending":
                 {
                     filteredDeals.sort((a, b) => {
-                        const aPrice = cleanPrice(a.SalePrice ? a.SalePrice : 0); // Convert price to a sortable number
-                        const bPrice = cleanPrice(b.SalePrice ? b.SalePrice : 0);
+                        const aPrice = cleanPrice(a.salePrice ? a.salePrice : 0); // Convert price to a sortable number
+                        const bPrice = cleanPrice(b.salePrice ? b.salePrice : 0);
 
                         return aPrice - bPrice; // Ascending order by Price
                     })
@@ -80,8 +124,8 @@ export const sortDeals = (filteredDeals: Deal[], sortQuery: string): Deal[] => {
             case "price descending":
                 {
                     filteredDeals.sort((a, b) => {
-                        const aPrice = cleanPrice(a.SalePrice ? a.SalePrice : 0); // Convert price to number
-                        const bPrice = cleanPrice(b.SalePrice ? b.SalePrice : 0);
+                        const aPrice = cleanPrice(a.salePrice ? a.salePrice : 0); // Convert price to number
+                        const bPrice = cleanPrice(b.salePrice ? b.salePrice : 0);
 
                         return bPrice - aPrice; // Ascending order by Price
                     })
@@ -90,14 +134,23 @@ export const sortDeals = (filteredDeals: Deal[], sortQuery: string): Deal[] => {
             case "alphabetically":
                 {
                     filteredDeals.sort((a, b) => {
-                        return a.Description?.localeCompare(b.Description);
+                        return a.description?.localeCompare(b.description);
                     })
                     break;
                 }
-
-
+            case "percent off":
+                {
+                    // TODO: calculate % off
+                    filteredDeals.sort((a, b) => {
+                        const aDiscount = a.salePrice && a.retailPrice ? cleanPrice(a.retailPrice) - perUnitPrice(a.salePrice) : 0; // Convert price to number
+                        const bDiscount = b.salePrice && b.retailPrice ? cleanPrice(b.retailPrice) - perUnitPrice(b.salePrice) : 0;
+                        //console.log("A: ", a.description, aDiscount, "B: ", b.description, bDiscount);
+                        return bDiscount - aDiscount; // Ascending order by Price
+                    })
+                    break;
+                }
         }
-
+        console.log(sortedDeals);
 
         return sortedDeals
     }
@@ -114,22 +167,22 @@ export const assignStyles = () => {
     const header: HTMLLinkElement | null = document.querySelector("#header")
 
     const wrapperStyle = {
-      overflow: 'visible',
-      width: `calc(100svw + ${scrollbarWidth}px)`
+        overflow: 'visible',
+        width: `calc(100svw + ${scrollbarWidth}px)`
     }
     const rootStyle = {
-      width: `calc(100svw + ${scrollbarWidth}px)`
+        width: `calc(100svw + ${scrollbarWidth}px)`
     }
 
     const btnStyle = {
-      width: 'auto',
-      whiteSpace: 'normal', // Equivalent to text wrapping
-      overflow: 'visible'
+        width: 'auto',
+        whiteSpace: 'normal', // Equivalent to text wrapping
+        overflow: 'visible'
     };
 
     const navStyle = {
-      position: 'relative',
-      zIndex: 101,
+        position: 'relative',
+        zIndex: 101,
     };
 
     // Apply each style from the object to the element
@@ -137,4 +190,42 @@ export const assignStyles = () => {
     root && Object.assign(root.style, rootStyle);
     btn && Object.assign(btn.style, btnStyle);
     header && Object.assign(header.style, navStyle);
-  }
+}
+
+export const assignDevStyles = () => {
+    // Array of stylesheet URLs
+    const stylesheets = [
+        "./src/Default CSS/907ce8a0_ai1ec_parsed_css.css",
+        "./src/Default CSS/ajax-load-more.min.css",
+        "./src/Default CSS/all.css",
+        "./src/Default CSS/bootstrap.min.css",
+        "./src/Default CSS/calendar.css",
+        "./src/Default CSS/czo1ptk.css",
+        "./src/Default CSS/item-search-frontend.css",
+        "./src/Default CSS/jquery.fancybox.css",
+        "./src/Default CSS/jquery.fancybox.min.css",
+        "./src/Default CSS/js_composer.min.css",
+        "./src/Default CSS/perfect-columns.css",
+        "./src/Default CSS/print.min.css",
+        "./src/Default CSS/style-wp.css",
+        "./src/Default CSS/style.css",
+        "./src/Default CSS/styles__ltr.css",
+        "./src/Default CSS/styles.css",
+        "./src/Default CSS/v4-shims.css"
+    ];
+
+    // Function to dynamically add stylesheets
+
+    const addStylesheets = (stylesheets: string[]) => {
+        const head = document.head || document.getElementsByTagName('head')[0];
+        stylesheets.forEach(href => {
+            const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.href = href;
+            head.appendChild(link);
+        });
+    }
+
+    // Add the stylesheets to the head
+    import.meta.env.PROD ? undefined : addStylesheets(stylesheets)
+}

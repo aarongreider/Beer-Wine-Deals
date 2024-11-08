@@ -1,0 +1,38 @@
+$green: #2a4731;
+$cream: #e9e5d4;
+
+#chipWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: calc(6px + (12 - 6) * ((100vw - 500px) / (800 - 300)));
+    flex-wrap: wrap;
+    max-width: 400px;
+}
+
+.chip {
+    cursor: pointer;
+    padding: 7px 7px;
+    background: $green;
+    border-radius: 30px;
+    border: 3px solid $cream;
+
+    flex-grow: 1;
+    width: min-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h4 {
+        color: $cream;
+        margin: 0;
+    }
+}
+
+
+.chip.active {
+    background: $cream;
+
+    h4 {
+        color: $green;
+    }
+}
