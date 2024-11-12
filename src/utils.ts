@@ -8,16 +8,43 @@ export type Deal = {
     restrictions?: string,
 }
 
-export const tabNames = {
-    beer: "Beer",
-    wine: "Wine",
-    spirits: "Spirits",
-    misc: "Other"
+export const categories = {
+    Beer: "Beer",
+    Wine: "Wine",
+    Spirits: "Spirits",
+    Other: "Other"
 }
+
+export const colors = {
+    Beer: '#f7941d',
+    Wine: '#9e1f63',
+    Spirits: '#ed1c24',
+    Other: '#39b54a'
+}
+
 const endpoints = {
     prod: 'https://mobile-api-dev.junglejims.com/beer-wine-deals.json',
     local: 'src/assets/beer-wine-deals.json',
 }
+
+/* const imagePaths = {
+    can_single
+    can_4pk
+    can_6pk
+    can_8pk
+    can_12pk
+    can_18pk
+    can_24pk
+    bottle_single
+    bottle_4pk
+    bottle_6pk
+    bottle_10pk
+    bottle_12pk
+    bottle_24pk
+    
+} */
+
+
 
 export const fetchDealsData = async (): Promise<Deal[]> => {
     try {
@@ -58,11 +85,11 @@ export const filterWithChips = (deals: Deal[], activeChips: string[]): Deal[] =>
         return deals.filter((deal) => { // filter deals matching condition
             return activeChips.some((query) => { // if any active chip matches condition against deal
                 return `${deal.category}`.toLowerCase().includes(query.toLowerCase()) ? // if category and tab match
-                    true : query.toLowerCase() === tabNames.misc.toLowerCase() && // else if other tab is active
+                    true : query.toLowerCase() === categories.Other.toLowerCase() && // else if other tab is active
                     ![
-                        tabNames.beer.toLowerCase(),
-                        tabNames.wine.toLowerCase(),
-                        tabNames.spirits.toLowerCase()
+                        categories.Beer.toLowerCase(),
+                        categories.Wine.toLowerCase(),
+                        categories.Spirits.toLowerCase()
                     ].includes(`${deal.category}`.toLowerCase())  // return true if it does not match any other tab name
             })
         })

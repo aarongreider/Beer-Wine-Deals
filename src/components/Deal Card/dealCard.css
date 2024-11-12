@@ -1,11 +1,13 @@
 .dealCard {
-  padding: 10px 20px;
+  padding: 0;
+  padding-right: 20px;
   width: auto;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 6px;
+  overflow: hidden;
   background: #e9e5d4;
   border-radius: 16px;
   font-size: 22px;
@@ -16,16 +18,17 @@
 .dealCard * {
   margin: 0;
 }
-.dealCard div {
+.dealCard .flexCol {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 2px;
   text-align: left;
-}
-.dealCard div:last-child {
-  align-items: flex-end;
-  text-align: right;
+  margin: 10px 0;
+  /* &:last-child {
+          align-items: flex-end;
+          text-align: right;
+      } */
 }
 .dealCard p {
   font-size: 18px;

@@ -1,9 +1,17 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { assignDevStyles, assignStyles, Deal, fetchDealsData, filterDeals, filterWithChips, sortDeals, tabNames } from './utils'
+import { assignDevStyles, assignStyles, Deal, fetchDealsData, filterDeals, filterWithChips, sortDeals, categories } from './utils'
 import { FilterToolbar } from './components/Filter Toolbar/FilterToolbar'
 import { DealCard } from './components/Deal Card/DealCard'
 import { Chip } from './components/Chip/Chip'
+
+
+/* TODO: Embed! */
+/* TODO: Embed! */
+/* TODO: Embed! */
+/* TODO: Embed! */
+/* TODO: Embed! */
+/* TODO: Embed! */
 
 function App() {
   // original and display deals
@@ -95,10 +103,10 @@ function App() {
         <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: "flex-end",alignItems: 'center', position: 'sticky', top: navHeight, gap: '10px'}}>
           
           <div id='chipWrapper' style={{flexGrow: 1}}>
-            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.beer)} title={tabNames.beer}></Chip>
-            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.wine)} title={tabNames.wine}></Chip>
-            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.spirits)} title={tabNames.spirits}></Chip>
-            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(tabNames.misc)} title={tabNames.misc}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(categories.Beer)} title={categories.Beer}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(categories.Wine)} title={categories.Wine}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(categories.Spirits)} title={categories.Spirits}></Chip>
+            <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(categories.Other)} title={categories.Other}></Chip>
           </div>
           <FilterToolbar navHeight={navHeight} searchQuery={''} setSortQuery={setSortQuery} setSearchQuery={setSearchQuery} />
         </div>

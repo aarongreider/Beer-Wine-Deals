@@ -22,7 +22,7 @@ export function FilterToolbar({ navHeight, searchQuery, setSortQuery, setSearchQ
                 {/*  */}
                 <div style={{ position: 'relative' }}>
                     <select id="sortWidget" className="noAppearance" ref={sortRef} onChange={onSort}
-                        style={{ textAlign: "left", zIndex: 1, width: '63px', }}>
+                        style={{ textAlign: "left", zIndex: 1, width: '63px', fontWeight: 900 }}>
                         <option value={''}>Sort</option>
                         <option value={'percent off'}>% Off</option>
                         <option value={'price descending'}>Price ↓</option>
