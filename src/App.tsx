@@ -23,7 +23,7 @@ function App() {
   const [navHeight, setNavHeight] = useState<number>(50)
 
   useEffect(() => {  // fetch data and apply sticky compatible styles onload
-    console.log("v 1.0");
+    console.log("v 1.1");
 
     const fetchData = async () => {
       try {
@@ -35,7 +35,7 @@ function App() {
         console.log("Error fetching data");
       }
     };
-    
+
     setTimeout(assignStyles, 500);
     assignDevStyles();
     fetchData();
@@ -66,8 +66,6 @@ function App() {
   }, [window.innerWidth, window.innerHeight]);
 
   useEffect(() => {
-    console.log("active chips:", activeChips);
-    
     setFilteredDeals(getSortedAndFilteredDeals())
   }, [searchQuery, sortQuery, activeChips])
 

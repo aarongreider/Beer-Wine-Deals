@@ -19,8 +19,6 @@ export function Chip({ title, isActive, loaded, handleActivateChip }: ChipProps)
                 const words = pathname.split('#');
                 const cat = words[words.length - 1];
                 const cappedCat = cat.charAt(0).toUpperCase() + cat.slice(1);
-                console.log(cappedCat);
-                console.log(pathname, words, cat, cappedCat);
                 if (cappedCat === title) {
                     handleClick()
                 }
