@@ -3,7 +3,6 @@ import "../../App.css"
 import { Deal } from "../../utils"
 import { Graphic } from "../Graphic/Graphic"
 import { getColor } from "../../utils"
-/* import convert from 'convert-units'; */
 
 interface DealCardProps {
     deal: Deal

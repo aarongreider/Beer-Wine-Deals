@@ -19,14 +19,13 @@ export function FilterToolbar({ navHeight, searchQuery, setSortQuery, setSearchQ
     return <>
         <div id='toolbarWrapper' style={{ top: `${navHeight + 10}px`}}>
             <div id="filterToolbar">
-                {/*  */}
                 <div style={{ position: 'relative' }}>
                     <select id="sortWidget" className="noAppearance" ref={sortRef} onChange={onSort}
-                        style={{ textAlign: "left", zIndex: 1, width: '63px', fontWeight: 900 }}>
+                        style={{ textAlign: "left", zIndex: 1, width: '71px', fontWeight: 900 }}>
                         <option value={''}>Sort</option>
                         <option value={'percent off'}>% Off</option>
-                        <option value={'price descending'}>Price ↓</option>
-                        <option value={'price ascending'}>Price ↑</option>
+                        <option value={'price descending'}>Most $</option>
+                        <option value={'price ascending'}>Least $</option>
                         <option value={'alphabetically'}>A-Z</option>
                     </select>
 
