@@ -100,7 +100,7 @@ function App() {
           margin: 0,
         }}>Beer and Wine One Time Deals</h1>
 
-        <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: "flex-end",alignItems: 'center', position: 'sticky', top: navHeight, gap: '10px'}}>
+        <div style={{zIndex: 100, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: "flex-end",alignItems: 'center', position: 'sticky', top: navHeight, gap: '10px'}}>
           
           <div id='chipWrapper' style={{flexGrow: 1}}>
             <Chip handleActivateChip={handleToggleChip} isActive={activeChips.includes(categories.Beer)} title={categories.Beer}></Chip>

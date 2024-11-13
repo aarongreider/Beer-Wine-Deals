@@ -17,7 +17,7 @@ export function FilterToolbar({ navHeight, searchQuery, setSortQuery, setSearchQ
     }
 
     return <>
-        <div id='toolbarWrapper' style={{ top: `${navHeight + 10}px` }}>
+        <div id='toolbarWrapper' style={{ top: `${navHeight + 10}px`}}>
             <div id="filterToolbar">
                 {/*  */}
                 <div style={{ position: 'relative' }}>

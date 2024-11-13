@@ -16,15 +16,24 @@ export const categories = {
 }
 
 export const colors = {
-    Beer: '#f7941d',
-    Wine: '#9e1f63',
-    Spirits: '#ed1c24',
-    Other: '#39b54a'
+    Beer: 'rgb(232 131 10)',
+    Wine: 'rgb(174 75 128)',
+    Spirits: 'rgb(223 97 45)',
+    Other: 'rgb(69 159 81)'
 }
 
 const endpoints = {
     prod: 'https://mobile-api-dev.junglejims.com/beer-wine-deals.json',
     local: 'src/assets/beer-wine-deals.json',
+}
+
+export const getColor = (category: string): string => {
+    switch (category) {
+        case categories.Beer: return colors.Beer;
+        case categories.Wine: return colors.Wine;
+        case categories.Spirits: return colors.Spirits;
+        default: return colors.Other;
+    }
 }
 
 /* const imagePaths = {
