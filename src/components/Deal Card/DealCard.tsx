@@ -29,8 +29,8 @@ export function DealCard({ deal }: DealCardProps) {
                     </div>
                 </div>
                 <div>
-                    <h3 style={{ color: '#c50a0a', fontWeight: 900 }}>{deal.salePrice}</h3>
-                    <s>{deal.retailPrice}</s>
+                    <h3 style={{ color: '#c50a0a', fontWeight: 800 }}>{deal.salePrice}</h3>
+                    <s style={{fontWeight: 600}}>{deal.retailPrice}</s>
                 </div>
             </div>
         </>

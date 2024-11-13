@@ -65,7 +65,7 @@ export function Graphic({ deal }: GraphicProps) {
             <div className="containerContainer" style={{ background: `${getColor(deal.category)}` }}>
 
                 <img src={`${getVesselPath(deal.quantity)}`}></img>
-                <p>{deal.size}</p>
+                <p style={{margin: 0}}>{deal.size}</p>
 
             </div>
         </>
