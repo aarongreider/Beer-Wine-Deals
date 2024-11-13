@@ -31,16 +31,16 @@ function App() {
   // TODO: Figure out if search should be controlled or uncontrolled, useCallback? store filteredDeals in Zustand?
 
   useEffect(() => {  // fetch data and apply sticky compatible styles onload
-    console.log("v 0.1");
+    console.log("v 1.0");
 
     const fetchData = async () => {
       try {
         const data = await fetchDealsData();
         setDeals([...data]);
         setFilteredDeals([...data]);
-        console.log("Fetching data", data);
+        //console.log("Fetching data", data);
       } catch {
-        console.log("Error fetching data in useEffect");
+        console.log("Error fetching data");
       }
     };
 

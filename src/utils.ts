@@ -71,7 +71,7 @@ export const fetchDealsData = async (): Promise<Deal[]> => {
 
 export const filterDeals = (deals: Deal[], searchQuery: string): Deal[] => {
     // filter bottle list based on query match, runs more frequently
-    console.log(searchQuery);
+    //console.log(searchQuery);
 
     const cleanQuery = `${searchQuery}`.toLowerCase()
     if (cleanQuery) {
@@ -144,7 +144,7 @@ export const sortDeals = (filteredDeals: Deal[], sortQuery: string): Deal[] => {
         return filteredDeals
     } else {
         let sortedDeals: Deal[] = filteredDeals;
-        console.log('sortQuery', sortQuery);
+        //console.log('sortQuery', sortQuery);
 
         switch (sortQuery) {
             case "price ascending":
@@ -186,7 +186,7 @@ export const sortDeals = (filteredDeals: Deal[], sortQuery: string): Deal[] => {
                     break;
                 }
         }
-        console.log(sortedDeals);
+        //console.log(sortedDeals);
 
         return sortedDeals
     }
