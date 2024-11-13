@@ -23,8 +23,8 @@ export function DealCard({ deal }: DealCardProps) {
                             <p style={{ backgroundColor: `${getColor(deal.category)}` }} className="tag">{deal.category?.toUpperCase()}</p>
                         </div>
                         <div className="flexRow" style={{ margin: '0 1px 2px' }}>
-                            <p style={{ fontSize: '18px', fontWeight: 900 }}>{deal.quantity}{/* , {deal.size} */}</p>
-                            <p style={{ fontSize: '16px', fontWeight: 900, textAlign: "center" }}>{deal.restrictions?.toUpperCase()}</p>
+                            <p style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>{deal.quantity}{/* , {deal.size} */}</p>
+                            <p style={{ fontSize: '16px', fontWeight: 800, margin: 0, textAlign: "center" }}>{deal.restrictions?.toUpperCase()}</p>
                         </div>
                     </div>
                 </div>
