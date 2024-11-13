@@ -11,7 +11,7 @@ interface ChipProps {
 export function Chip({ title, isActive, loaded, handleActivateChip }: ChipProps) {
     useEffect(() => {
         const processURL = () => {
-            const pathname = window.location.pathname;
+            const pathname = `${window.location}`;
             //const pathname = "/beerwinedeals/#beer";
 
             if (pathname) {
@@ -20,6 +20,7 @@ export function Chip({ title, isActive, loaded, handleActivateChip }: ChipProps)
                 const cat = words[words.length - 1];
                 const cappedCat = cat.charAt(0).toUpperCase() + cat.slice(1);
                 console.log(cappedCat);
+                console.log(pathname, words, cat, cappedCat);
                 if (cappedCat === title) {
                     handleClick()
                 }
