@@ -19,7 +19,8 @@ export function DealCard({ deal }: DealCardProps) {
                     <div className="flexCol">
                         <div className="flexRow" style={{ flexWrap: "wrap", WebkitFlexWrap: 'wrap-reverse' }}>
                             <h2 style={{ fontSize: '28px', margin: 0, lineHeight: 1 }}>{deal.description}</h2>
-                            <p style={{ backgroundColor: `${getColor(deal.category)}` }} className="tag">{deal.category?.toUpperCase()}</p>
+                            <p style={{ backgroundColor: `${getColor(deal.category)}` }} className="tag">
+                                {deal.category?.toUpperCase() === "FMB" ? "FLAVORED MALT BEV.": deal.category?.toUpperCase()}</p>
                         </div>
                         <div className="flexRow" style={{ margin: '0 1px 2px' }}>
                             <p style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>{deal.quantity}{/* , {deal.size} */}</p>
