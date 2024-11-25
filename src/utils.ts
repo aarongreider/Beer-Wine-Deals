@@ -23,7 +23,7 @@ export const colors = {
 }
 
 const endpoints = {
-    prod: 'https://mobile-api-dev.junglejims.com/beer-wine-deals.json',
+    prod: 'https://mobile-api.junglejims.com/beer-wine-deals.json',
     local: 'src/assets/beer-wine-deals.json',
 }
 
