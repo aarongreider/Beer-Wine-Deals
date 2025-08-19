@@ -16,6 +16,7 @@ function App() {
   const [activeChips, setActiveChips] = useState<string[]>([])
   const [searchQuery, setSearchQuery] = useState<string>('')
   const [sortQuery, setSortQuery] = useState<string>('')
+  const [jcfDestroyed, setJcfDestroyed] = useState<boolean>(false)
 
   // layout variables
   //const [viewportRes, setViewportRes] = useState({ x: window.innerWidth, y: window.innerHeight })
@@ -41,6 +42,49 @@ function App() {
     fetchData();
 
   }, [])
+
+  useEffect(() => { // JCF Setting up the window.onload event inside useEffect
+    /* UNBIND JCF FROM SELECT OBJECTS */
+    let numRecursions = 0;
+    const peskyJCF = () => {
+      if (!jcfDestroyed && numRecursions < 10) {
+        numRecursions++
+
+        try {
+          //console.log("Getting JCF Instance");
+
+          const selectElements = document.querySelectorAll('select');
+          //console.log("select object: ", selectElement);
+
+          // Get the jcf instance associated with the select element
+
+          selectElements.forEach((selectElement) => {
+            // @ts-ignore
+            const jcfInstance = jcf.getInstance(selectElement);
+
+            // Check if instance exists and destroy it
+            if (jcfInstance) {
+              jcfInstance.destroy();
+              console.log("Destroying JCF Instance D:<", jcfInstance);
+              setJcfDestroyed(true)
+            } else {
+              //console.log("NO INSTANCE AHHHH");
+              setTimeout(peskyJCF, 500)
+            }
+          })
+        } catch (error) {
+          //console.log(error);
+        }
+      }
+    }
+
+    window.addEventListener('load', peskyJCF);
+
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('load', peskyJCF);
+    };
+  }, []);
 
   useEffect(() => { // set the loading state of the app when filtered bottles is set successfully
     if (!appLoaded && (filteredDeals.length > 0)) {
